@@ -1,0 +1,21 @@
+<div class="container">
+
+    <div class="navbar navbar-default">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="https://github.com/nervgh/angular-file-upload">File Uploader</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a routerLink="/home/upload" routerLinkActive="active">Home</a></li>
+                <li><a routerLink="/home/list" routerLinkActive="active">List</a></li>
+                <li (click)="onSubmit()"><a href="#">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <!-- Routed components go here -->
+    <router-outlet></router-outlet>
+
+</div>

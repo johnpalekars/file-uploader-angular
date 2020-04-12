@@ -1,0 +1,75 @@
+
+
+
+<div class="row">
+
+    <div class="col-md-3">
+        <h3>Uploader</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Enter Your Name :
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>
+                        <input type="text" name="" id="input" class="form-control" [(ngModel)]="data.username">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h3>Select files</h3>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input class="custom-file-input form-control" type="file" id="file" name="file" multiple (change)="getFileDetails($event)">
+
+                     
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="col-md-1"></div>
+
+    <div class="col-md-8" style="margin-bottom: 40px">
+
+        <h3>Upload queue</h3>
+
+        <table class="table" [hidden]="!data.file_info">
+            <thead>
+                <tr>
+                    <th width="50%">Name</th>
+                    <th>Size</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of data.file_info">
+                    <td><strong>{{ i.name }}</strong></td>
+                    <td nowrap>{{ math.round(i.size/1024) }} KB</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+
+            <button type="button" class="btn btn-success btn-s" (click)="uploadFiles()">
+                            <span class=" glyphicon glyphicon-upload "></span> Upload all
+                        </button>
+
+        </div>
+
+
+    </div>
+
+</div>

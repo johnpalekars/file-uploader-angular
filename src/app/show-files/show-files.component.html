@@ -1,0 +1,32 @@
+<div class="col-sm-12">
+    <button type="button" class="btn btn-large btn-block btn-default" (click)="show_data()">Get Details</button>
+
+</div>
+
+
+
+<br>
+<br>
+
+<div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Uploader</th>
+                <th>File Path</th>
+                <th>Date Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let file of download_data;index as t" >
+                <td>{{t+1}}</td>
+                <td>{{file.username}}</td>
+                <td><a href="{{file.fileLocation}}" target="_blank">{{file.fileName}}</a></td>
+                <td>{{file.modified}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
