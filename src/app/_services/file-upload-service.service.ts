@@ -16,8 +16,8 @@ export class FileUploadServiceService {
     return this.httpClient.post(this.REST_API_SERVER+"upload/", formData);
   }
 
-  public download(): Observable<any> {
-    return this.httpClient.get(this.REST_API_SERVER + "download/");
+  public download(value): Observable<any> {
+    return this.httpClient.post(this.REST_API_SERVER + "download/",value);
   }
 
 }

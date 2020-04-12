@@ -30,8 +30,8 @@ export class HomeComponent implements OnInit {
       .logout()
       .pipe(first())
       .subscribe(
-        data => {
-          this.router.navigate(['/login'])
+        () => {
+          // this.router.navigate(['/login'])
         },
         error => {
           this.alertService.error(error)

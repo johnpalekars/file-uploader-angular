@@ -1,29 +1,19 @@
-
-
-
 <div class="row">
 
     <div class="col-md-3">
-        <h3>Uploader</h3>
+
         <table class="table">
             <thead>
                 <tr>
                     <th>
-                        Enter Your Name :
+                        <h3>Uploader</h3>
                     </th>
                 </tr>
             </thead>
             <tbody>
-
                 <tr>
                     <td>
-                        <input type="text" name="" id="input" class="form-control" [(ngModel)]="data.username">
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <h3>Select files</h3>
+                        <h3>Select files To Upload</h3>
                     </td>
                 </tr>
 
@@ -31,7 +21,7 @@
                     <td>
                         <input class="custom-file-input form-control" type="file" id="file" name="file" multiple (change)="getFileDetails($event)">
 
-                     
+
                     </td>
                 </tr>
 

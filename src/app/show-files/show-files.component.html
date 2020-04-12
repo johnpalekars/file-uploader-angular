@@ -14,16 +14,16 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Uploader</th>
-                <th>File Path</th>
+                <th>Files</th>
+                <th>Size</th>
                 <th>Date Created</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let file of download_data;index as t" >
+            <tr *ngFor="let file of download_data;index as t">
                 <td>{{t+1}}</td>
-                <td>{{file.username}}</td>
                 <td><a href="{{file.fileLocation}}" target="_blank">{{file.fileName}}</a></td>
+                <td>{{math.round(file.fileSize/1024)}} KB</td>
                 <td>{{file.modified}}</td>
             </tr>
         </tbody>
