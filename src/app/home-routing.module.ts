@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router'
 import { FileUploadComponent } from './file-upload/file-upload.component'
 import { ShowFilesComponent } from './show-files/show-files.component'
 import { HomeComponent } from './home/home.component'
+import { UserComponent } from './user/User.Component'
+
 import { AuthGuard } from './_guards'
 
 const routes: Routes = [
@@ -18,6 +20,11 @@ const routes: Routes = [
       {
         path: 'list',
         component: ShowFilesComponent,
+        canActivate: [AuthGuard],
+      },
+       {
+        path: 'user',
+        component: UserComponent,
         canActivate: [AuthGuard],
       },
     ],

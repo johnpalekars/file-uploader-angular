@@ -19,18 +19,24 @@ import { AuthGuard } from './_guards'
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
 import { JwtInterceptor, ErrorInterceptor } from './_helpers'
 import { routing } from './app.routing';
-import { HomeRoutingModule } from  './home-routing.module';
+import { HomeRoutingModule } from './home-routing.module';
+import { AlertComponent } from './_directives';
+import { UserComponent } from './user/User.Component';
 
 
 
 @NgModule({
   declarations: [
+    
     AppComponent,
     FileUploadComponent,
     ShowFilesComponent,
     LoginComponent,
     RegisterComponent,
     HomeComponent,
+    AlertComponent,
+    UserComponent,
+    
   ],
   imports: [
     HomeRoutingModule,

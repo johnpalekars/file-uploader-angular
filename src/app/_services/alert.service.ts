@@ -29,6 +29,12 @@ export class AlertService {
 
     error(message: string, keepAfterNavigationChange = false) {
         this.keepAfterNavigationChange = keepAfterNavigationChange;
+        if (message = "Bad Request") {
+            message = "Username or Password is incorrect"
+        }
+        else if ( message = "") {
+            message = "Password Not Matched"
+        }
         this.subject.next({ type: 'error', text: message });
     }
 

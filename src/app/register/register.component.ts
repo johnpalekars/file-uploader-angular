@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.registerForm = this.formBuilder.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
@@ -38,6 +39,7 @@ export class RegisterComponent implements OnInit {
           PasswordStrengthValidator,
         ],
       ],
+      re_password: ['',[Validators.required,]]
     })
   }
 
@@ -48,18 +50,18 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true
-
     // stop here if form is invalid
     if (this.registerForm.invalid) {
-      return
-    }
+      return this.alertService.error('May be password did not match')
 
+    }
     this.loading = true
     this.userService
       .register(this.registerForm.value)
       .pipe(first())
       .subscribe(
         data => {
+          console.log(data)
           this.alertService.success('Registration successful', true)
           this.router.navigate(['/login'])
         },

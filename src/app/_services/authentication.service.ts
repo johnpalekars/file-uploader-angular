@@ -56,7 +56,7 @@ export class AuthenticationService {
   }
 
   public currentID() {
-    console.log(this.currentUserID.value)
+  
     return this.currentUserID.value
   }
 

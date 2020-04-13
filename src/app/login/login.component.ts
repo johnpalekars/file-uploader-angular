@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup
   loading = false
   submitted = false
-  returnUrl: string ='/home/upload'
+  returnUrl: string = '/home/upload'
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
     })
 
     // get return url from route parameters or default to '/'
-    
   }
 
   // convenience getter for easy access to form fields
@@ -55,10 +54,12 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate([this.returnUrl])
+          if (data.auth_token) {
+            this.router.navigate([this.returnUrl])
+          }
         },
-        error => {
-          this.alertService.error(error)
+        err => {
+          this.alertService.error(err)
           this.loading = false
         },
       )

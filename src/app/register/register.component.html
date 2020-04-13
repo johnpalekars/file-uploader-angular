@@ -5,7 +5,7 @@
     <div class="col-sm-4"></div>
     <div class="col-sm-4">
         <br>
-        
+
 
         <h2>Register</h2>
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
@@ -25,7 +25,7 @@
             </div>
             <div class="form-group">
                 <label for="username">Email</label>
-                <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                     <div *ngIf="f.email.errors.required">Username is required</div>
                     <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
@@ -48,11 +48,19 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="re_password">Confirm Password</label>
+                <input type="password" formControlName="re_password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.re_password.errors }" />
+                <div *ngIf="submitted && f.re_password.errors" class="invalid-feedback">
+                    <div *ngIf="f.re_password.errors.required">Password is required</div>
+                    <div *ngIf="f.re_password.errors.minlength">Password must be at least 8 characters</div>
+                </div>
+            </div>
+            <div class="form-group">
                 <button [disabled]="loading" class="btn btn-primary">Register</button>
-                <img *ngIf="loading" src="" />
                 <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
             </div>
         </form>
+        <alert></alert>
 
     </div>
 </div>

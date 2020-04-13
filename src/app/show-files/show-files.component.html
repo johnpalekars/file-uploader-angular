@@ -1,32 +1,33 @@
-<div class="col-sm-12">
-    <button type="button" class="btn btn-large btn-block btn-default" (click)="show_data()">Get Details</button>
+<div class="container">
+    <div class="col-sm-12">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Files</th>
+                    <th>Size</th>
+                    <th>Date Created</th>
+                    <th>Select</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let file of files;index as t">
+                    <td>{{t+1}}</td>
+                    <td><a href="{{file.fileLocation}}" target="_blank">{{file.fileName}}</a></td>
+                    <td>{{math.round(file.fileSize/1024)}} KB</td>
+                    <td>{{file.modified}}</td>
+                    <td><input type="checkbox" (click)="onSelect(file.id)"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <hr>
 
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <button type="button" (click)="deleteFile()" class="btn btn-danger">Delete Selected Files</button>
+    </div>
+    <div class="col-sm-4"></div>
 </div>
-
-
-
-<br>
-<br>
-
-<div>
-
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Files</th>
-                <th>Size</th>
-                <th>Date Created</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let file of download_data;index as t">
-                <td>{{t+1}}</td>
-                <td><a href="{{file.fileLocation}}" target="_blank">{{file.fileName}}</a></td>
-                <td>{{math.round(file.fileSize/1024)}} KB</td>
-                <td>{{file.modified}}</td>
-            </tr>
-        </tbody>
-    </table>
-
-</div>
+<br><br><br><br><br>

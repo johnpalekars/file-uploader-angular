@@ -1,0 +1,72 @@
+<div class="container">
+    <table class="table table-hover" [hidden]="edit">
+        <thead>
+            <tr>
+                <th>
+                    <h3>Account Information</h3>
+                </th>
+                <th>
+                    <button type="button" class="btn btn-primary" (click)=userEditChange()>Edit Information</button>
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>First Name</td>
+                <td>{{UserInfo.first_name}}</td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>{{UserInfo.last_name}}</td>
+            </tr>
+            <tr>
+                <td>Username</td>
+                <td>{{UserInfo.username}}</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>{{UserInfo.email}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+    <table class="table table-hover" [hidden]="!edit">
+        <thead>
+            <tr>
+                <th>
+                    <h3>Account Information</h3>
+                </th>
+                <th>
+                    <button type="button" class="btn btn-primary" (click)=userEditChange()>Cancel</button> &nbsp; &nbsp;
+                    <button type="button" class="btn btn-primary" (click)=userEdit()>Save</button>
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>First Name</td>
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]='UserEdit.first_name'>
+                </td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]='UserEdit.last_name'>
+                </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]='UserEdit.email'>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
