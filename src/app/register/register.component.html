@@ -51,8 +51,8 @@
                 <label for="re_password">Confirm Password</label>
                 <input type="password" formControlName="re_password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.re_password.errors }" />
                 <div *ngIf="submitted && f.re_password.errors" class="invalid-feedback">
-                    <div *ngIf="f.re_password.errors.required">Password is required</div>
-                    <div *ngIf="f.re_password.errors.minlength">Password must be at least 8 characters</div>
+                    <div *ngIf="registerForm.errors">Password must match
+                    </div>
                 </div>
             </div>
             <div class="form-group">
@@ -60,7 +60,6 @@
                 <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
             </div>
         </form>
-        <alert></alert>
 
     </div>
 </div>

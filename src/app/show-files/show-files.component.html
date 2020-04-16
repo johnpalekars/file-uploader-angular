@@ -16,7 +16,13 @@
                     <td><a href="{{file.fileLocation}}" target="_blank">{{file.fileName}}</a></td>
                     <td>{{math.round(file.fileSize/1024)}} KB</td>
                     <td>{{file.modified}}</td>
-                    <td><input type="checkbox" (click)="onSelect(file.id)"></td>
+                    <td><label class="checkbox-label">
+                            <input type="checkbox" (click)="onSelect(file.id)" >
+                                <span class="checkbox-custom rectangular">
+
+                                </span>
+                        </label>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -24,9 +30,13 @@
     <br>
     <hr>
 
+
     <div class="col-sm-4"></div>
-    <div class="col-sm-4">
+    <div class="col-sm-2">
         <button type="button" (click)="deleteFile()" class="btn btn-danger">Delete Selected Files</button>
+    </div>
+    <div class="col-sm-2">
+        <button type="button" (click)="deleteAll()" class="btn btn-danger">Delete All</button>
     </div>
     <div class="col-sm-4"></div>
 </div>

@@ -9,7 +9,7 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   public register(user) {
-    return this.http.post(this.REST_API_SERVER + 'auth/users/', user)
+    return this.http.post(this.REST_API_SERVER + 'createUser/', user)
   }
 
   public userInfo(): Observable<any> {
@@ -19,4 +19,9 @@ export class UserService {
   public userEdit(user): Observable<any> {
     return this.http.put(this.REST_API_SERVER + 'auth/users/me/', user)
   }
+
+  public adminUsers(): Observable<any> {
+    return this.http.get(this.REST_API_SERVER+ 'AdminUser/')
+  }
+
 }

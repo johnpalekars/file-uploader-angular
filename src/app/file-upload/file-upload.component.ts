@@ -1,31 +1,48 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, OnDestroy } from '@angular/core'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { FileUploadServiceService } from '../_services/file-upload-service.service'
 import { AuthenticationService } from '../_services/authentication.service'
+import { NavigationEnd, Router } from '@angular/router'
 
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.css'],
 })
-export class FileUploadComponent implements OnInit {
-
+export class FileUploadComponent implements OnInit, OnDestroy {
   title = 'file-uploader'
   message2 = 'No File Selected'
   userID = null
   fileCount = 0
-
-  constructor(
-    private _snackBar: MatSnackBar,
-    private fileUploadService: FileUploadServiceService,
-    private authenticationService: AuthenticationService,
-  ) {}
-
+  mySubscription: any
   math = Math
-
   data = {
     myFiles: [],
     file_info: [],
+  }
+
+  constructor(
+    private router: Router,
+    private _snackBar: MatSnackBar,
+    private fileUploadService: FileUploadServiceService,
+    private authenticationService: AuthenticationService,
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function() {
+      return false
+    }
+
+    this.mySubscription = this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        // Trick the Router into believing it's last link wasn't previously loaded
+        this.router.navigated = false
+      }
+    })
+  }
+
+  ngOnDestroy(): void {
+    if (this.mySubscription) {
+      this.mySubscription.unsubscribe()
+    }
   }
 
   ngOnInit() {
@@ -56,13 +73,12 @@ export class FileUploadComponent implements OnInit {
       console.log(this.fileCount)
     })
     if (this.fileCount < 2) {
-      this.fileCount = 0;
+      this.fileCount = 0
       return this._snackBar.open(this.message2, action, {
-            duration: 6000,
-          })
+        duration: 3000,
+      })
     }
 
-  
     this.fileUploadService.file_upload(frmData).subscribe(
       data => {
         console.log(data)
@@ -70,11 +86,15 @@ export class FileUploadComponent implements OnInit {
           this._snackBar.open(message, action, {
             duration: 6000,
           })
+
+          this.ngOnDestroy()
         }
       },
       err => console.error(err),
       // the third argument is a function which runs on completion
-      () => console.log('done Uploading') 
+      () => {
+        console.log('done Uploading')
+      },
     )
   }
 }

@@ -18,16 +18,16 @@ import { FileUploadServiceService } from './_services/file-upload-service.servic
 import { AuthGuard } from './_guards'
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
 import { JwtInterceptor, ErrorInterceptor } from './_helpers'
-import { routing } from './app.routing';
-import { HomeRoutingModule } from './home-routing.module';
-import { AlertComponent } from './_directives';
-import { UserComponent } from './user/User.Component';
-
-
+import { routing } from './app.routing'
+import { HomeRoutingModule } from './home-routing.module'
+import { AlertComponent } from './_directives'
+import { UserComponent } from './user/User.Component'
+import { AdminComponent } from './admin/admin.component'
+import { InterestComponent } from './interest/interest.component'
+import { MatDialogModule } from '@angular/material/dialog'
 
 @NgModule({
   declarations: [
-    
     AppComponent,
     FileUploadComponent,
     ShowFilesComponent,
@@ -36,7 +36,8 @@ import { UserComponent } from './user/User.Component';
     HomeComponent,
     AlertComponent,
     UserComponent,
-    
+    AdminComponent,
+    InterestComponent,
   ],
   imports: [
     HomeRoutingModule,
@@ -47,7 +48,7 @@ import { UserComponent } from './user/User.Component';
     FormsModule,
     MatSnackBarModule,
     ReactiveFormsModule,
-
+    MatDialogModule,
   ],
   providers: [
     AuthGuard,

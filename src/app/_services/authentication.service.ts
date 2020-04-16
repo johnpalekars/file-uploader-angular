@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators'
 export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<null>
   public currentUserID: BehaviorSubject<null>
+  public isAdmin: BehaviorSubject<null>
   public currentUser: Observable<null>
 
   private REST_API_SERVER = 'http://127.0.0.1:8000/'
@@ -19,6 +20,9 @@ export class AuthenticationService {
     )
     this.currentUserID = new BehaviorSubject<null>(
       JSON.parse(localStorage.getItem('currentUserID')),
+    )
+    this.isAdmin = new BehaviorSubject<null>(
+      JSON.parse(localStorage.getItem('isAdmin')),
     )
     this.currentUser = this.currentUserSubject.asObservable()
   }
@@ -42,7 +46,10 @@ export class AuthenticationService {
             this.getID(value).subscribe(data => {
               localStorage.setItem('currentUserID', JSON.stringify(data.ID))
               this.currentUserID.next(data.ID)
+              localStorage.setItem('isAdmin', JSON.stringify(data.isAdmin))
+              this.isAdmin.next(data.isAdmin)
               console.log(this.currentUserID.value)
+              console.log(this.isAdmin.value)
             })
           }
 
@@ -56,8 +63,11 @@ export class AuthenticationService {
   }
 
   public currentID() {
-  
     return this.currentUserID.value
+  }
+
+  public isAdminUser() {
+    return this.isAdmin.value
   }
 
   logout() {
@@ -65,9 +75,10 @@ export class AuthenticationService {
 
     localStorage.removeItem('currentUser')
     localStorage.removeItem('currentUserID')
+    localStorage.removeItem('isAdmin')
 
     this.currentUserSubject.next(null)
-
+    this.isAdmin.next(null)
     this.currentUserID.next(null)
 
     return this.http.post<any>(this.REST_API_SERVER + 'auth/token/logout', {})

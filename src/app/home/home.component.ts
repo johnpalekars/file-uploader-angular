@@ -4,15 +4,13 @@ import { Router, ActivatedRoute } from '@angular/router'
 import { first } from 'rxjs/operators'
 import { AlertService } from '../_services/alert.service'
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-
-
+  isAdmin: boolean
   returnUrl: string
 
   constructor(
@@ -20,11 +18,20 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private alertService: AlertService,
+  ) {}
 
-  ) { }
+  ngOnInit() {
+    this.isAdmin = this.authenticationService.isAdminUser()
+  }
 
-  ngOnInit() {}
-
+  isAdminLogin() {
+    console.log('this.isAdmin' + this.isAdmin)
+    if (this.isAdmin) {
+      return true
+    } else {
+      return false
+    }
+  }
   onSubmit() {
     this.authenticationService
       .logout()
