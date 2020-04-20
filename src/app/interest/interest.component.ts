@@ -8,6 +8,11 @@ import { Component, OnInit, Inject } from '@angular/core'
   styleUrls: ['./interest.component.css'],
 })
 export class InterestComponent implements OnInit {
+
+  // ---------------------------------------------
+  // ITS A DUMMY COMPONENT, ITS NOT USED IN PROJECT
+  // ---------------------------------------------
+
   Principal: number;
   Period: number;
   Rate: number;

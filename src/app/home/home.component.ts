@@ -18,27 +18,25 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private alertService: AlertService,
-  ) {}
+  ) {
+        // check Authentication Service if user is admin or not
+        this.isAdmin = this.authenticationService.isAdmin
+        console.log('this.isAdmin' + this.authenticationService.isAdmin)
+
+  }
 
   ngOnInit() {
-    this.isAdmin = this.authenticationService.isAdminUser()
+
   }
 
-  isAdminLogin() {
-    console.log('this.isAdmin' + this.isAdmin)
-    if (this.isAdmin) {
-      return true
-    } else {
-      return false
-    }
-  }
+  // Method for logging the user Out
   onSubmit() {
     this.authenticationService
       .logout()
       .pipe(first())
       .subscribe(
         () => {
-          // this.router.navigate(['/login'])
+          this.router.navigate(['/login'])
         },
         error => {
           this.alertService.error(error)

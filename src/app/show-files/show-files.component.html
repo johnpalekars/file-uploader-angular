@@ -1,5 +1,8 @@
 <div class="container">
     <div class="col-sm-12">
+
+        <!-- ------------- Dynamic table for showing files of logged in user ------------------ -->
+
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -17,6 +20,7 @@
                     <td>{{math.round(file.fileSize/1024)}} KB</td>
                     <td>{{file.modified}}</td>
                     <td><label class="checkbox-label">
+                            <!-- --------- CheckBox for selecting files to delete ---------- -->
                             <input type="checkbox" (click)="onSelect(file.id)" >
                                 <span class="checkbox-custom rectangular">
 
@@ -33,9 +37,13 @@
 
     <div class="col-sm-4"></div>
     <div class="col-sm-2">
+
+        <!-- ----------------- Button for deleting selected files ------------------ -->
         <button type="button" (click)="deleteFile()" class="btn btn-danger">Delete Selected Files</button>
     </div>
     <div class="col-sm-2">
+
+        <!-- ----------------- Button for deleting All files ------------------ -->
         <button type="button" (click)="deleteAll()" class="btn btn-danger">Delete All</button>
     </div>
     <div class="col-sm-4"></div>

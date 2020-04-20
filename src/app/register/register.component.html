@@ -6,7 +6,7 @@
     <div class="col-sm-4">
         <br>
 
-
+        <!-- ------------------------------ Angular formGroup ------------------------------------- -->
         <h2>Register</h2>
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
@@ -51,8 +51,7 @@
                 <label for="re_password">Confirm Password</label>
                 <input type="password" formControlName="re_password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.re_password.errors }" />
                 <div *ngIf="submitted && f.re_password.errors" class="invalid-feedback">
-                    <div *ngIf="registerForm.errors">Password must match
-                    </div>
+                    <div *ngIf="registerForm.errors">Password must match</div>
                 </div>
             </div>
             <div class="form-group">

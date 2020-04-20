@@ -8,6 +8,7 @@ import { AlertService } from '../_services/alert.service'
 
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
+  // Declearing required variables
   loginForm: FormGroup
   loading = false
   submitted = false
@@ -31,8 +32,6 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
       username: ['', Validators.required],
     })
-
-    // get return url from route parameters or default to '/'
   }
 
   // convenience getter for easy access to form fields
@@ -40,6 +39,7 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls
   }
 
+  // Calling login service for logging in the user
   onSubmit() {
     this.submitted = true
 

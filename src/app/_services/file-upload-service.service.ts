@@ -12,15 +12,18 @@ export class FileUploadServiceService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public file_upload(formData: FormData): Observable<any> {
+  // Calling the API upload and passing the Object as a argument
+  public uploadFiles(formData: FormData): Observable<any> {
     return this.httpClient.post(this.REST_API_SERVER+"upload/", formData);
   }
 
-  public download(value: null): Observable<any> {
+  // Calling the API download and passing the id as a argument
+  public getFiles(value: null): Observable<any> {
     return this.httpClient.post(this.REST_API_SERVER + "download/",value);
   }
 
-  public file_delete(value: any): Observable<any> {
+  // Calling the API fileDelete and passing the id's as a argument
+  public deleteFiles(value: any): Observable<any> {
     return this.httpClient.post(this.REST_API_SERVER + "fileDelete/",value);
   }
 

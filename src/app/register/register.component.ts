@@ -10,11 +10,15 @@ import { PasswordStrengthValidator } from './valid.pass'
 
 @Component({ templateUrl: 'register.component.html' })
 export class RegisterComponent implements OnInit {
+
+  //------------ Declearing required variables------------------
   registerForm: FormGroup
   loading = false
   submitted = false
 
+  // ------------ Constructor ----------------
   constructor(
+    // Creating instances
     private formBuilder: FormBuilder,
     private router: Router,
     private authenticationService: AuthenticationService,
@@ -23,6 +27,7 @@ export class RegisterComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // ---------- Creating Form using FormBuilder -----------
     this.registerForm = this.formBuilder.group(
       {
         firstName: ['', [Validators.required]],
@@ -57,17 +62,19 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.controls
   }
 
+  // func for checking if both entered password are same
   password(formGroup: FormGroup) {
     const { value: password } = formGroup.get('password')
     const { value: re_Password } = formGroup.get('re_password')
     return password === re_Password ? null : { passwordNotMatch: true }
   }
 
+  // Submitting the form object to the rest api
   onSubmit() {
     this.submitted = true
     // stop here if form is invalid
     if (this.registerForm.invalid) {
-      return this.alertService.error('May be password did not match')
+      return this.alertService.error('Invalid input')
     }
     this.loading = true
     this.userService

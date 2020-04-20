@@ -8,8 +8,12 @@ import { Subject, BehaviorSubject } from 'rxjs'
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
+  // this variable stores the null or 1 of the
+  // toggle between user info and user edit table
   edit = null
 
+  // This Object is used to store the user information
+  // which is going to display on userInfo table
   private UserInfo = {
     first_name: '',
     last_name: '',
@@ -17,19 +21,28 @@ export class UserComponent implements OnInit {
     username: '',
   }
 
+  // This Object is used to store the user information
+  // which is going to change in order to users request
   UserEdit = {
     first_name: '',
     last_name: '',
     email: '',
   }
 
-  constructor(private userService: UserService) {}
+  constructor(
+    // Creating the instance of userService
+    private userService: UserService
+    
+  ) { }
 
   ngOnInit() {
+    // Calling the userData() function to show
+    // data when the Component Loads
     this.userData()
   }
 
   userData() {
+    // Method used for storing data in the local variables
     this.userService.userInfo().subscribe(
       data => {
         this.UserInfo.first_name = data.first_name
@@ -48,6 +61,7 @@ export class UserComponent implements OnInit {
   }
 
   userEditChange() {
+    // method used for toggling between tables
     if (this.edit == null) {
       this.edit = 1
     } else if (this.edit == 1) {
@@ -58,6 +72,8 @@ export class UserComponent implements OnInit {
   }
 
   userEdit() {
+    
+    // method for reflecting the changed data into the dataBase
     console.log(this.UserEdit)
     this.userService.userEdit(this.UserEdit).subscribe(
       data => {

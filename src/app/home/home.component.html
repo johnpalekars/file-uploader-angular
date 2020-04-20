@@ -1,5 +1,5 @@
 <div class="container">
-
+<!-- showing navigation bar with mutiple tabs -->
     <div class="navbar navbar-default">
         <div class="navbar-header">
             <a class="navbar-brand" routerLink="/home/upload" routerLinkActive="active">File Uploader</a>
@@ -9,8 +9,8 @@
                 <li><a routerLink="/home/upload" routerLinkActive="active">Home</a></li>
                 <li><a routerLink="/home/list" routerLinkActive="active">List</a></li>
                 <li><a routerLink="/home/user" routerLinkActive="active">Settings</a></li>
-                <!-- <li *ngIf='isAdmin'><a routerLink="/home/admin" routerLinkActive="active">Admin</a></li> -->
-                <li *ngIf='isAdminLogin()'><a routerLink="/home/admin" routerLinkActive="active">Admin</a></li>
+                <!-- This tab is shown only when logged in user is admin -->
+                <li *ngIf='isAdmin'><a routerLink="/home/admin" routerLinkActive="active">Admin</a></li>
                 <li (click)="onSubmit()"><a href="#">Logout</a></li>
             </ul>
         </div>

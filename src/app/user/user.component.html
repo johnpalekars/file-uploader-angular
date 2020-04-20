@@ -1,4 +1,5 @@
 <div class="container">
+    <!-- Created the table for showing the personal information to user  -->
     <table class="table table-hover" [hidden]="edit">
         <thead>
             <tr>
@@ -32,6 +33,7 @@
     </table>
 
 
+    <!-- Created the table for showing the personal information to user and can EDIT the information -->
 
 
     <table class="table table-hover" [hidden]="!edit">
@@ -51,18 +53,21 @@
             <tr>
                 <td>First Name</td>
                 <td>
+                    <!-- used ngModel for storing changed values -->
                     <input type="text" class="form-control" [(ngModel)]='UserEdit.first_name'>
                 </td>
             </tr>
             <tr>
                 <td>Last Name</td>
                 <td>
+                    <!-- used ngModel for storing changed values -->
                     <input type="text" class="form-control" [(ngModel)]='UserEdit.last_name'>
                 </td>
             </tr>
             <tr>
                 <td>Email</td>
                 <td>
+                    <!-- used ngModel for storing changed values -->
                     <input type="text" class="form-control" [(ngModel)]='UserEdit.email'>
                 </td>
             </tr>

@@ -3,7 +3,7 @@
     <hr>
     <button type="button" (click)="show_users()" class="btn btn-default">Show</button>
     <hr>
-
+    <!-- ----------------- Table for showing all the users in the system --------------------- -->
     <table *ngIf="users" class="table table-hover">
         <thead>
             <tr>
@@ -31,6 +31,7 @@
                 <td>{{user.is_superuser}}</td>
                 <td>{{user.last_login}}</td>
                 <td>
+                    <!-- -----Button for showing files of related user using Id----- -->
                     <button type="button" (click)="show_files(user.id)" class="btn btn-default">Files</button>
                 </td>
             </tr>
@@ -39,37 +40,25 @@
     <br>
     <hr>
 
-
-            <table *ngIf='files' class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Files</th>
-                        <th>Size</th>
-                        <th>Date Created</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let file of files;index as t">
-                        <td>{{t+1}}</td>
-                        <td><a href="{{file.fileLocation}}" target="_blank">{{file.fileName}}</a></td>
-                        <td>{{math.round(file.fileSize/1024)}} KB</td>
-                        <td>{{file.modified}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        <br>
-        <hr>
-
-
-        <!-- <div class="col-sm-4"></div>
-    <div class="col-sm-2">
-        <button type="button" (click)="deleteFile()" class="btn btn-danger">Delete Selected Files</button>
-    </div>
-    <div class="col-sm-2">
-        <button type="button" (click)="deleteAll()" class="btn btn-danger">Delete All</button>
-    </div>
-    <div class="col-sm-4"></div>
-</div>
-<br><br><br><br><br> -->
+    <!-- ----------------- Table for showing files of selected user --------------------- -->
+    <table *ngIf='files' class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Files</th>
+                <th>Size</th>
+                <th>Date Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let file of files;index as t">
+                <td>{{t+1}}</td>
+                <td><a href="{{file.fileLocation}}" target="_blank">{{file.fileName}}</a></td>
+                <td>{{math.round(file.fileSize/1024)}} KB</td>
+                <td>{{file.modified}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <hr>
 </div>

@@ -4,12 +4,14 @@ import { FileUploadComponent } from './file-upload/file-upload.component'
 import { ShowFilesComponent } from './show-files/show-files.component'
 import { HomeComponent } from './home/home.component'
 import { UserComponent } from './user/User.Component'
-import { AdminComponent } from './admin/admin.component';
-
+import { AdminComponent } from './admin/admin.component'
 
 import { AuthGuard } from './_guards'
 
 const routes: Routes = [
+  // This variable is for routes which can only be seen from Home component
+  // because our landing component is Login Component
+
   {
     path: 'home',
     component: HomeComponent,
@@ -24,12 +26,12 @@ const routes: Routes = [
         component: ShowFilesComponent,
         canActivate: [AuthGuard],
       },
-       {
+      {
         path: 'user',
         component: UserComponent,
         canActivate: [AuthGuard],
       },
-       {
+      {
         path: 'admin',
         component: AdminComponent,
         canActivate: [AuthGuard],
@@ -42,5 +44,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-    
 export class HomeRoutingModule {}
